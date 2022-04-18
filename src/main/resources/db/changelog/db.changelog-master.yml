@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+    # schema
+       file: db/changelog/sqlSchemaCity.sql
+  - include:
+      # schema
+      file: db/changelog/sqlSchemaDistance.sql
