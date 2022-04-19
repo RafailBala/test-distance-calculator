@@ -1,4 +1,4 @@
-package com.example.testdistancecalculator.canc;
+package com.example.testdistancecalculator;
 
 import com.example.testdistancecalculator.models.City;
 import com.example.testdistancecalculator.models.DataList;
@@ -10,7 +10,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class XML {
@@ -23,31 +22,8 @@ public class XML {
         return object;
     }
 
-    public static void beanToXml(int num1, int num2,String xmlPath) throws JAXBException, IOException {
-        long a;
-        float b, c;
-        List<City> cityList = new ArrayList<>();
-        List<Distance> distanceList = new ArrayList<>();
-        ;
-        for (int i = 0; i < num1; i++) {
-            a = (long) i;
-            b = (float) ((10+i/num1) + 0.123 * i);
-            c = (float) ((12+i/num1) + 0.321 * i);
-            City city = new City(a, "A" + i, b, c);
-            cityList.add(city);
-        }
-        int count = 0;
-        while (count < num2) {
-            b = (float) (5 + 0.5 * count);
-            a = (long) count;
-            if (num1 > count) {
-                for (int j = 0; j < cityList.size(); j++) {
-                    Distance distance = new Distance(num2-count-j, cityList.get(count).getName(), cityList.get(j).getName(), b);
-                    distanceList.add(distance);
-                }
-            }
-            count++;
-        }
+    public static void beanToXml(List<City> cityList, List<Distance> distanceList, String xmlPath) throws JAXBException, IOException {
+
         DataList dataList = new DataList();
         dataList.setCityList(cityList);
         dataList.setDistanceList(distanceList);

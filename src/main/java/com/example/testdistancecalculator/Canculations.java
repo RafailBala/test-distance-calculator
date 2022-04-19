@@ -1,4 +1,4 @@
-package com.example.testdistancecalculator.canc;
+package com.example.testdistancecalculator;
 
 public class Canculations {
     private static double EARTH_RADIUS = 6371;

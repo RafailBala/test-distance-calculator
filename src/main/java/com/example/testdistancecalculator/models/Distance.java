@@ -10,28 +10,30 @@ import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @XmlRootElement(name = "distance")
-@XmlType(propOrder = { "id", "fromCity", "toCity","distance"})
+@XmlType(propOrder = {"id", "fromCity", "toCity", "distance"})
 public class Distance {
     @Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
+    // @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotNull
-    @Column(name = "from_city")
-    private String fromCity;
-    @NotNull
-    @Column(name = "to_city")
-    private String toCity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_fromCity", referencedColumnName = "id")
+    private City fromCity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_toCity", referencedColumnName = "id")
+    private City toCity;
     @NotNull
     private float distance;
 
     public Distance() {
     }
-    public Distance(long id, String fromCity, String toCity, float distance) {
+
+    public Distance(long id, City fromCity, City toCity, float distance) {
         this.id = id;
         this.fromCity = fromCity;
         this.toCity = toCity;
         this.distance = distance;
     }
+
     @Override
     public String toString() {
         StringBuffer str = new StringBuffer();
@@ -45,29 +47,36 @@ public class Distance {
                 .append('}');
         return str.toString();
     }
+
     @XmlAttribute(name = "id")
     public long getId() {
+
         return id;
     }
 
     public void setId(long id) {
+
         this.id = id;
     }
+
     @XmlElement(name = "fromCity")
-    public String getFromCity() {
+    public City getFromCity() {
         return fromCity;
     }
 
-    public void setFromCity(String fromCity) {
+    public void setFromCity(City fromCity) {
         this.fromCity = fromCity;
     }
+
     @XmlElement(name = "toCity")
-    public String getToCity() {
+    public City getToCity() {
         return toCity;
     }
-    public void setToCity(String toCity) {
+
+    public void setToCity(City toCity) {
         this.toCity = toCity;
     }
+
     @XmlElement(name = "distance")
     public float getDistance() {
         return distance;

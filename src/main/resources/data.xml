@@ -1,73 +1,137 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="GBK" standalone="yes"?>
 <list>
     <city id="1">
-        <name>–°–∞–º–∞—Ä–∞</name>
+        <name>ß≥ß—ßﬁß—ß‚ß—</name>
         <latitude>53.2415</latitude>
         <longitude>50.22125</longitude>
     </city>
     <city id="2">
-        <name>–ú–æ—Å–∫–≤–∞</name>
+        <name>ßÆß‡ß„ß‹ß”ß—</name>
         <latitude>55.75583</latitude>
         <longitude>37.6173</longitude>
     </city>
-	<city id="3">
-        <name>–°–æ—á–∏</name>
+    <city id="3">
+        <name>ß≥ß‡ßÈß⁄</name>
         <latitude>43.60281</latitude>
         <longitude>39.73415</longitude>
     </city>
-	<city id="4">
-        <name>–î–µ—Ä–±–µ–Ω—Ç</name>
+    <city id="4">
+        <name>ß•ß÷ß‚ß“ß÷ßﬂß‰</name>
         <latitude>42.06743</latitude>
         <longitude>48.28909</longitude>
     </city>
-	<city id="5">
-        <name>–ï–∫–∞—Ç–µ—Ä–∏–Ω–±—É—Ä–≥</name>
+    <city id="5">
+        <name>ß¶ß‹ß—ß‰ß÷ß‚ß⁄ßﬂß“ßÂß‚ß‘</name>
         <latitude>56.83893</latitude>
         <longitude>60.6057</longitude>
     </city>
-	<city id="6">
-        <name>–ù–∞–¥—ã–º</name>
+    <city id="6">
+        <name>ßØß—ß’ßÌßﬁ</name>
         <latitude>65.5333300</latitude>
         <longitude>72.5166700</longitude>
     </city>
     <distance id="1">
-        <fromCity>–°–∞–º–∞—Ä–∞</fromCity>
-        <toCity>–ú–æ—Å–∫–≤–∞</toCity>
-        <distance>1053 </distance>
+        <fromCity id="1">
+            <name>ß≥ß—ßﬁß—ß‚ß—</name>
+            <latitude>53.2415</latitude>
+            <longitude>50.22125</longitude>
+        </fromCity>
+        <toCity id="2">
+            <name>ßÆß‡ß„ß‹ß”ß—</name>
+            <latitude>55.75583</latitude>
+            <longitude>37.6173</longitude>
+        </toCity>
+        <distance>1053</distance>
     </distance>
     <distance id="2">
-        <fromCity>–°–∞–º–∞—Ä–∞</fromCity>
-        <toCity>–°–æ—á–∏</toCity>
+        <fromCity id="1">
+            <name>ß≥ß—ßﬁß—ß‚ß—</name>
+            <latitude>53.2415</latitude>
+            <longitude>50.22125</longitude>
+        </fromCity>
+        <toCity id="3">
+            <name>ß≥ß‡ßÈß⁄</name>
+            <latitude>43.60281</latitude>
+            <longitude>39.73415</longitude>
+        </toCity>
         <distance>1825</distance>
     </distance>
-	<distance id="3">
-        <fromCity>–ú–æ—Å–∫–≤–∞</fromCity>
-        <toCity>–°–æ—á–∏</toCity>
-        <distance>1 632</distance>
+    <distance id="3">
+        <fromCity id="2">
+            <name>ßÆß‡ß„ß‹ß”ß—</name>
+            <latitude>55.75583</latitude>
+            <longitude>37.6173</longitude>
+        </fromCity>
+        <toCity id="3">
+            <name>ß≥ß‡ßÈß⁄</name>
+            <latitude>43.60281</latitude>
+            <longitude>39.73415</longitude>
+        </toCity>
+        <distance>1632</distance>
     </distance>
-	<distance id="4">
-        <fromCity>–ú–æ—Å–∫–≤–∞</fromCity>
-        <toCity>–ù–∞–¥—ã–º</toCity>
+    <distance id="4">
+        <fromCity id="2">
+            <name>ßÆß‡ß„ß‹ß”ß—</name>
+            <latitude>55.75583</latitude>
+            <longitude>37.6173</longitude>
+        </fromCity>
+        <toCity id="6">
+            <name>ßØß—ß’ßÌßﬁ</name>
+            <latitude>65.5333300</latitude>
+            <longitude>72.5166700</longitude>
+        </toCity>
         <distance>3136</distance>
     </distance>
-	<distance id="5">
-        <fromCity>–ï–∫–∞—Ç–µ—Ä–∏–Ω–±—É—Ä–≥</fromCity>
-        <toCity>–ù–∞–¥—ã–º</toCity>
+    <distance id="5">
+        <fromCity id="5">
+            <name>ß¶ß‹ß—ß‰ß÷ß‚ß⁄ßﬂß“ßÂß‚ß‘</name>
+            <latitude>56.83893</latitude>
+            <longitude>60.6057</longitude>
+        </fromCity>
+        <toCity id="6">
+            <name>ßØß—ß’ßÌßﬁ</name>
+            <latitude>65.5333300</latitude>
+            <longitude>72.5166700</longitude>
+        </toCity>
         <distance>1605</distance>
     </distance>
-	<distance id="6">
-        <fromCity>–°–æ—á–∏</fromCity>
-        <toCity>–ï–∫–∞—Ç–µ—Ä–∏–Ω–±—É—Ä–≥</toCity>
+    <distance id="6">
+        <fromCity id="3">
+            <name>ß≥ß‡ßÈß⁄</name>
+            <latitude>43.60281</latitude>
+            <longitude>39.73415</longitude>
+        </fromCity>
+        <toCity id="5">
+            <name>ß¶ß‹ß—ß‰ß÷ß‚ß⁄ßﬂß“ßÂß‚ß‘</name>
+            <latitude>56.83893</latitude>
+            <longitude>60.6057</longitude>
+        </toCity>
         <distance>2768</distance>
     </distance>
-	<distance id="7">
-        <fromCity>–î–µ—Ä–±–µ–Ω—Ç</fromCity>
-        <toCity>–ï–∫–∞—Ç–µ—Ä–∏–Ω–±—É—Ä–≥</toCity>
+    <distance id="7">
+        <fromCity id="4">
+            <name>ß•ß÷ß‚ß“ß÷ßﬂß‰</name>
+            <latitude>42.06743</latitude>
+            <longitude>48.28909</longitude>
+        </fromCity>
+        <toCity id="5">
+            <name>ß¶ß‹ß—ß‰ß÷ß‚ß⁄ßﬂß“ßÂß‚ß‘</name>
+            <latitude>56.83893</latitude>
+            <longitude>60.6057</longitude>
+        </toCity>
         <distance>2728</distance>
     </distance>
-	<distance id="8">
-        <fromCity>–î–µ—Ä–±–µ–Ω—Ç</fromCity>
-        <toCity>–°–∞–º–∞—Ä–∞</toCity>
+    <distance id="8">
+        <fromCity id="4">
+            <name>ß•ß÷ß‚ß“ß÷ßﬂß‰</name>
+            <latitude>42.06743</latitude>
+            <longitude>48.28909</longitude>
+        </fromCity>
+        <toCity id="1">
+            <name>ß≥ß—ßﬁß—ß‚ß—</name>
+            <latitude>53.2415</latitude>
+            <longitude>50.22125</longitude>
+        </toCity>
         <distance>1783</distance>
     </distance>
 </list>

@@ -2,14 +2,9 @@ package com.example.testdistancecalculator.models;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.persistence.*;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @Entity
 @XmlRootElement(name = "city")
@@ -24,7 +19,8 @@ public class City {
     private float latitude;
     @NotNull
     private float longitude;
-
+    @OneToMany(mappedBy="id", fetch= FetchType.EAGER)
+    List<Distance> distanceList;
     public City() {
     }
 
@@ -78,5 +74,12 @@ public class City {
 
     public void setLongitude(float longitude) {
         this.longitude = longitude;
+    }
+    @XmlTransient
+    public List<Distance> getDistanceList() {
+        return distanceList;
+    }
+    public void setDistanceList(List<Distance> distanceList) {
+        this.distanceList = distanceList;
     }
 }

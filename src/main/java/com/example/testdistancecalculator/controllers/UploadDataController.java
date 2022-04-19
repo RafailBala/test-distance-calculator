@@ -1,13 +1,11 @@
 package com.example.testdistancecalculator.controllers;
-import com.example.testdistancecalculator.canc.XML;
+import com.example.testdistancecalculator.XML;
+import com.example.testdistancecalculator.dao.service.CityService;
+import com.example.testdistancecalculator.dao.service.DistanceService;
 import com.example.testdistancecalculator.models.City;
 import com.example.testdistancecalculator.models.DataList;
 import com.example.testdistancecalculator.models.Distance;
-import com.example.testdistancecalculator.repo.CityRepository;
-import com.example.testdistancecalculator.repo.DistanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,9 +22,9 @@ import java.util.List;
 @RequestMapping
 public class UploadDataController {
     @Autowired
-    private CityRepository cityRepository;
+    private DistanceService distanceService;
     @Autowired
-    private DistanceRepository distanceRepository;
+    private CityService cityService;
 
     @GetMapping("/upload")
     public String getUpload(Model model) {
@@ -55,6 +53,7 @@ public class UploadDataController {
         //File в MultipartFile
         MultipartFile file= new MockMultipartFile("data.xml",new FileInputStream("src/main/resources/data.xml"));
         addData(file);
+        //XML.beanToXml(10,30,"C:\\Users\\balae\\IdeaProjects\\test-distance-calculator\\src\\main\\resources\\1.xml");
         return "upload";
     }
 
@@ -64,12 +63,10 @@ public class UploadDataController {
         List<City> cityList = dataList.getCityList();
         List<Distance> distanceList=dataList.getDistanceList();
         for(int i=0;i<cityList.size();i++){
-            cityRepository.save(cityList.get(i));
-            //System.out.println(cityList.get(i));
+            cityService.saveObj(cityList.get(i));
         }
         for(int i=0;i<distanceList.size();i++) {
-            distanceRepository.save(distanceList.get(i));
-            //System.out.println(distanceList.get(i));
+            distanceService.saveObj(distanceList.get(i));
         }
     }
 

@@ -1,42 +1,45 @@
 package com.example.testdistancecalculator.controllers;
 
+import com.example.testdistancecalculator.dao.service.CityService;
+import com.example.testdistancecalculator.dto.CityDto;
 import com.example.testdistancecalculator.models.City;
-import com.example.testdistancecalculator.models.Distance;
-import com.example.testdistancecalculator.repo.CityRepository;
-import com.example.testdistancecalculator.repo.DistanceRepository;
+import liquibase.pro.packaged.C;
+import lombok.extern.java.Log;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.stream.Collectors;
+
 //@RestController
 @Controller
+@Log
 public class CityController {
     @Autowired
-    private CityRepository cityRepository;
+    private CityService cityService;
     @Autowired
-    private DistanceRepository distanceRepository;
+    private ModelMapper modelMapper;
 
     @GetMapping("/city")
     public String getCity(Model model) {
-        Iterable<City> cities = cityRepository.findAll();
+       // Iterable<City> cities = cityService.getAll();
+        Iterable<CityDto> cities = cityService.getAll().stream().map(post -> modelMapper.map(post, CityDto.class))
+                .collect(Collectors.toList());
         model.addAttribute("cities", cities);
         return "city";
     }
     @PostMapping("/city/{id}")
     public String cityDelete(@PathVariable(value="id") long id,
                              Model model) {
-        City city=cityRepository.findById(id);
-        cityRepository.delete(city);
-        List<Distance> distanceList=distanceRepository.findByFromCityOrToCityEquals(city.getName(),city.getName());
-        for(int i=0;i<distanceList.size();i++){
-            //удаляем все вхождения города в таблице расстояний
-            distanceRepository.delete(distanceList.get(i));
-        }
+
+        //City city=cityRepository.findById(id).orElseThrow();
+        //cityRepository.delete(city);
+        City city =cityService.get(id);
+        cityService.delete(city);
         return "redirect:/city";
     }
 }
