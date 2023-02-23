@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Загрузка</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<section class="jumbotron text-center">
+    <div class="container mt">
+        <h1><span style="vertical-align: inherit;"><span
+                style="vertical-align: inherit;">Загрузка данных в БД</span></span></h1>
+    </div>
+</section>
+<form th:action="@{/upload/add}" method="post">
+    <div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-3 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-3 mr-md-auto font-weight-normal"><span style="vertical-align: inherit;"><span
+                style="vertical-align: inherit;"></span></span></h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <button type="submit" value="Upload" class="btn btn-primary">
+                Добавить готовые данные
+            </button>
+        </nav>
+    </div>
+</form>
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <form class="row g-3" action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="was-validated">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <input type="file" accept=".xml" class="custom-file-input" name="file" id="file" required>
+                                <label class="custom-file-label" for="file"> Выбрать файл...</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" value="Upload" class="btn btn-primary">Загрузить</button>
+                    </div>
+                    <div class="col-12">
+                        <label th:if="${fileError==true}" >Ошибка при добавлении </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

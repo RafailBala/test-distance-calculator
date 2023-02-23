@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Города</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<section class="jumbotron text-center">
+    <div class="container mt">
+        <h1><span style="vertical-align: inherit;"><span
+                style="vertical-align: inherit;">Список всех городов</span></span></h1>
+    </div>
+</section>
+<table class="container mt-5" align="center">
+    <tr>
+        <th>Идентификатор</th>
+        <th>Название города</th>
+        <th>Широта</th>
+        <th>Долгота</th>
+        <th></th>
+    </tr>
+    <div th:each="el : ${cities}">
+        <tr>
+            <td><p th:text="${el.id}"/></td>
+            <td><p th:text="${el.name}"/></td>
+            <td><p th:text="${el.latitude}"/></td>
+            <td><p th:text="${el.longitude}"/></td>
+            <td>
+                <form th:action="'/city/'+${el.id}" method="post">
+                    <button class="btn btn-warning" type="submit">Удалить</button>
+                </form>
+            </td>
+        </tr>
+    </div>
+</table>
+</body>
+</html>
+</html>

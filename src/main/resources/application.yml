@@ -1,0 +1,14 @@
+spring:
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yml
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/distance_calculator;
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+    mysql:
+      console:
+        enabled: true
+  sql:
+    init:
+      platform: mysql

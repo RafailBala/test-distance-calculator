@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+    # schema
+       file: sqlSchema.sql
+       relativeToChangelogFile: true

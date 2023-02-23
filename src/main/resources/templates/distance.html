@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Расчет</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<section class="jumbotron text-center">
+    <div class="container mt">
+        <h1><span style="vertical-align: inherit;"><span
+                style="vertical-align: inherit;">Расчет расстояния</span></span></h1>
+    </div>
+</section>
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <form class="row g-3" th:action="@{/distance}" method="post">
+            <div class="col-md-4">
+                <div class="form-group" th:object="${cities}">
+                    <label for="method">Начальный город</label>
+                    <select class="custom-select" id="fromcity" name="fromcity" required>
+                        <option selected disabled value="">Выберите начальный город</option>
+                        <option th:each="el : ${cities}"
+                                th:value="${el.id}"
+                                th:text="${el.id}+' : '+${el.name}">
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" th:object="${cities}">
+                    <label for="method">Конечный город</label>
+                    <select class="custom-select" id="tocity" name="tocity" required>
+                        <option selected disabled value="">Выберите конечный город</option>
+                        <option th:each="el : ${cities}"
+                                th:value="${el.id}"
+                                th:text="${el.id}+' : '+${el.name}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" th:object="${methods}">
+                    <label for="method">Метод</label>
+                    <select class="custom-select" id="method" name="method" required>
+                        <option selected disabled value="">Выберите метод</option>
+                        <option th:each="el : ${methods}"
+                                th:value="${el.getNameMethod()}"
+                                th:text="${el.getNameMethod()}">
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Вычислить</button>
+            </div>
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="alert alert-success" role="alert" th:if="${resultCrow!=null} or ${resultMatr!=null}">
+            <h4 class="alert-heading">Результат запроса:</h4>
+            <p th:if="${resultCrow!=null} and ${resultMatr==null}" th:text="${resultCrow} + ' км по прямой линии.'"></p>
+            <p th:if="${resultCrow==null} and ${resultMatr!=null}"
+               th:text="${resultMatr}+ ' км по матрице расстояний.'"></p>
+            <p th:if="${resultCrow!=null} and ${resultMatr!=null}" th:text="${resultCrow} + ' км по прямой линии.'"></p>
+            <p th:if="${resultCrow!=null} and ${resultMatr!=null}"
+               th:text="${resultMatr} + ' км по матрице расстояний.'"></p>
+            <p th:text="'Результат приведен для городов: '+ ${citiesNames} +'.'"></p>
+            <hr>
+            <p class="mb-0" th:if="${method=='По прямой'}">Расчет расстояния выполнен только по прямой линии.</p>
+            <p class="mb-0" th:if="${method=='По матрице расстояний'}">Расчет расстояния выполнен только по матрице
+                расстояний. </p>
+            <p class="mb-0" th:if="${method=='Все'}">Расчет расстояния выполнен по всем способам.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
